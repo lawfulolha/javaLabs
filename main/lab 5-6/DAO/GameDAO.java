@@ -41,10 +41,10 @@ public class GameDAO implements DAO<Game, Integer>{
         }
 
         /**
-         * Create Product in DB
+         * Create game in DB
          *
          * @param game for create
-         * @return false if Employee already exist, true if creating success
+         * @return false if GameCharacter already exist, true if creating success
          */
         @Override
         public boolean create(Game game) {
@@ -61,10 +61,10 @@ public class GameDAO implements DAO<Game, Integer>{
         }
 
         /**
-         * Select Product by id.
+         * Select game by id.
          *
          * @param id for select.
-         * @return return valid entity if he exist. If entity does not exist return empty Person with id = A.
+         * @return return valid entity if he exist. If entity does not exist return empty game with id = A.
          */
         @Override
         public Game read(Integer id) {
@@ -87,9 +87,9 @@ public class GameDAO implements DAO<Game, Integer>{
         }
 
         /**
-         * Update Product`s salary by id
+         * Update game  by id
          *
-         * @param game new person state
+         * @param game new game state
          * @return true if success, false if fail
          */
         @Override
@@ -106,7 +106,7 @@ public class GameDAO implements DAO<Game, Integer>{
         }
 
         /**
-         * Delete Product by id
+         * Delete game by id
          *
          * @param game for delete
          * @return true if employee was deleted, false if person not exist
@@ -126,21 +126,21 @@ public class GameDAO implements DAO<Game, Integer>{
         }
 
         /**
-         * Convert ResultSet into Employee
+         * Convert ResultSet into Game
          *
          * @param rs ResultSet to convert
-         * @return Employee object
+         * @return Game object
          * @throws SQLException
          */
         @Override
         public Game resultSetToObj(ResultSet rs) throws SQLException {
-            Game product = new Game();
+            Game game = new Game();
 
             if(rs.next()) {
-                product.setID(rs.getInt("id"));
-                product.setName(rs.getString("name"));
+                game.setID(rs.getInt("id"));
+                game.setName(rs.getString("name"));
             }
 
-            return product;
+            return game;
         }
     }

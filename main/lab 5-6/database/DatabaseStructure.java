@@ -35,7 +35,7 @@ public class DatabaseStructure {
     }
 
     /**
-     * Creating table gae characters in gameCharDB
+     * Creating table game characters in gameCharDB
      *
      * @throws Exception
      */
@@ -53,9 +53,9 @@ public class DatabaseStructure {
     }
 
     /**
-     * Dropping table employees in employees DB
+     * Dropping table GameCharacter in GameCharacter DB
      *
-     * @throws Exception if smth going wrong
+     * @throws Exception if  wrong
      */
     public static void dropGameCharTable() throws Exception {
         dropTable(DROP_PLAYERS);

@@ -1,5 +1,4 @@
 package DAO;
-import main.Game;
 import main.GameCharacter;
 import javax.validation.constraints.NotNull;
 import java.sql.Connection;
@@ -40,7 +39,7 @@ public class GameCharDAO implements DAO<GameCharacter, Integer> {
     }
 
     /**
-     * Create Employee in DB
+     * Create GameCharacter in DB
      *
      *
      * @return false if Employee already exist, true if creating success
@@ -59,15 +58,14 @@ try(PreparedStatement statement = connection.prepareStatement(GameCharSQL.INSERT
             statement.setInt(8, player.getY());
             statement.setInt(9, 2);
             result =  statement.executeQuery().next();
-   //int update = statement.executeUpdate(INSERT.QUERY);
- /**/   } catch (SQLException e) {
+        } catch (SQLException e) {
         e.printStackTrace();
     }
         return result;
     }
 
     /**
-     * Select Employee by id.
+     * Select GameCharacter by id.
      *
      * @param id for select.
      * @return return valid entity if he exist. If entity does not exist return empty Person with id = A.
@@ -97,8 +95,6 @@ try(PreparedStatement statement = connection.prepareStatement(GameCharSQL.INSERT
     }
 
     /**
-     * Update Employee`s salary by id
-     *
      * @param
      * @return true if success, false if fail
      */
@@ -136,10 +132,10 @@ try(PreparedStatement statement = connection.prepareStatement(GameCharSQL.INSERT
     }
 
     /**
-     * Convert ResultSet into Employee
+     * Convert ResultSet into GameCharacter
      *
      * @param rs ResultSet to convert
-     * @return Employee object
+     * @return GameCharacter object
      * @throws SQLException
      */
     @Override
