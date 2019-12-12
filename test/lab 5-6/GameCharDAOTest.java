@@ -18,23 +18,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
-
 public class GameCharDAOTest {
     private Connection connection;
     private GameCharacter player;
     private GameCharacter playerForUpdate;
     private GameCharDAO gameCharDAO;
     private Game game; private GameDAO gameDAO;
-//    @BeforeClass
-//    public void createDB() throws Exception {
-//        DataBaseStructure.createEmployeesTable();
-//    }
-//
-//    @BeforeClass
-//    public void dropDB() throws Exception {
-//        DataBaseStructure.dropEmployeesTable();
-//    }
 
 
     @BeforeTest
@@ -52,7 +41,7 @@ public class GameCharDAOTest {
                 .setArmor(40).setDamage(45).setShootingRange(45).setPosition(2,2)
                 .build();
         playerForUpdate = GameCharacter.newBuilder()
-                .setId(23)
+                .setId(69)
                 .setName("John")
                 .setHealth(33)
                 .setArmor(40).setDamage(45).setShootingRange(45).setPosition(2,2)
@@ -77,7 +66,6 @@ public class GameCharDAOTest {
         game =  new Game(2,"new game", new GameCharacter[]{good,bad});
 
         gameDAO.create(game);
-   //     DatabaseStructure.createGameCharTable();
         assertEquals(true, gameCharDAO.create(player));
     }
 
@@ -98,11 +86,11 @@ public class GameCharDAOTest {
         assertEquals(gameCharDAO.update(playerForUpdate), true);
     }
 
-    /*
+
     @AfterClass
     public void deleteTest() {
         gameDAO.delete(game);
         assertEquals(gameCharDAO.delete(player), true);
     }
-*/
+
 }

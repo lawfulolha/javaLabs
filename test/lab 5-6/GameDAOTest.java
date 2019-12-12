@@ -2,7 +2,6 @@ package test;
 
         import DAO.GameDAO;
         import database.ConnectionManager;
-        import database.DatabaseStructure;
         import main.Game;
         import main.GameCharacter;
         import org.testng.annotations.*;
@@ -22,16 +21,6 @@ public class GameDAOTest {
     private Game game;
     private Game gameForUpdate;
     private GameDAO gameDAO;
-/*
- @BeforeClass
-    public void dropDB() throws Exception {
-        DatabaseStructure.dropGamesTable();
-    }
-*/
-//    @BeforeClass
-//    public void createDB() throws Exception {
-//        DataBaseStructure.createProductsTable();
-//    }
 
     @BeforeTest
     public void before() throws SQLException {
