@@ -68,9 +68,9 @@ public class GameDAO implements DAO<Game, Integer>{
          */
         @Override
         public Game read(Integer id) {
-            Game result = new Game();
+            Game result = new Game();result.setID(-1);
             result.setName("game");
-            result.setID(-1);
+
 
             try (PreparedStatement statement = connection.prepareStatement(GameSQL.GET.QUERY)) {
                 statement.setInt(1, id);
@@ -96,8 +96,8 @@ public class GameDAO implements DAO<Game, Integer>{
         public boolean update(Game game) {
             boolean result = false;
             try(PreparedStatement statement = connection.prepareStatement(GameSQL.UPDATE.QUERY)) {
-                statement.setString(2, game.getName());
-                statement.setInt(1, game.getID());
+                statement.setInt(2, game.getID());
+                 statement.setString(1, game.getName());
                 result = statement.executeQuery().next();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -117,7 +117,6 @@ public class GameDAO implements DAO<Game, Integer>{
 
             try(PreparedStatement statement = connection.prepareStatement(GameSQL.DELETE.QUERY)) {
                 statement.setInt(1, game.getID());
-                statement.setString(2, game.getName());
                 result = statement.executeQuery().next();
             }catch (SQLException e) {
                 e.printStackTrace();
@@ -130,7 +129,6 @@ public class GameDAO implements DAO<Game, Integer>{
          *
          * @param rs ResultSet to convert
          * @return Game object
-         * @throws SQLException
          */
         @Override
         public Game resultSetToObj(ResultSet rs) throws SQLException {

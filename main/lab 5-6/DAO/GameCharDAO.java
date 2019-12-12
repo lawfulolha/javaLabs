@@ -15,7 +15,7 @@ public class GameCharDAO implements DAO<GameCharacter, Integer> {
         GET("SELECT * FROM players  WHERE players.id = (?);"),
         INSERT("INSERT INTO players (id, name, health, armor, damage, shooting_range, x,y, game_id) VALUES ((?), (?), (?), (?),(?), (?),(?), (?),(?)) RETURNING id"),
         DELETE("DELETE FROM players WHERE id = (?) RETURNING id;"),
-        UPDATE("UPDATE players SET health = (?) WHERE id = (?) RETURNING id");
+        UPDATE("UPDATE players SET name = (?) WHERE id = (?) RETURNING id");
 
         String QUERY;
 
@@ -103,8 +103,8 @@ try(PreparedStatement statement = connection.prepareStatement(GameCharSQL.INSERT
         boolean result = false;
         create(player);
         try (PreparedStatement statement = connection.prepareStatement(GameCharSQL.UPDATE.QUERY)) {
-            statement.setString(2, player.getName());
-            statement.setInt(1, player.getId());
+            statement.setInt(2, player.getId());
+            statement.setString(1, player.getName()+"the Great");
             result = statement.executeQuery().next();
         } catch (SQLException e) {
             e.printStackTrace();
